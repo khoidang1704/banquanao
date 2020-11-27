@@ -24,7 +24,7 @@
                         <!-- END: weight -->
                      </select>
                 </td>
-                <td>{ROW.name_customer}</td>
+                <td>{ROW.name}</td>
                 <td>{ROW.address}</td>
                 <td>{ROW.phone}</td>
                 <td>{ROW.email}</td>

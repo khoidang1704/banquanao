@@ -78,6 +78,7 @@ while ($row = $result->fetch()) {
     $array_row[$row['id']] = $row;
 }
 
+
 $xtpl = new XTemplate('list_order.tpl', NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/modules/' . $module_file);
 $xtpl->assign('LANG', $lang_module);
 $xtpl->assign('NV_LANG_VARIABLE', NV_LANG_VARIABLE);
@@ -102,9 +103,10 @@ if (!empty($array_row)) {
         $row['url_delete'] = NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name
         . '&amp;' . NV_OP_VARIABLE . '=list_order&amp;id=' . $row['id'] . '&action=delete&checksess=' . md5($row['id'] . NV_CHECK_SESSION);
         $row['active'] = $row['active'] == 1 ? 'checked="checked"' : '';
-        $row['name_customer'] = !empty($arr_name_customer[$row['name_customer']]) ? $arr_name_customer[$row['name_customer']]['fullname'] : '';
+        $row['name'] = !empty($arr_name_customer[$row['name_customer']]) ? $arr_name_customer[$row['name_customer']]['fullname'] : '';
         $row['address'] = !empty($arr_name_customer[$row['name_customer']]) ? $arr_name_customer[$row['name_customer']]['address'] : '';
-
+        $row['phone'] = !empty($arr_name_customer[$row['name_customer']]) ? $arr_name_customer[$row['name_customer']]['phone'] : '';
+        $row['email'] = !empty($arr_name_customer[$row['name_customer']]) ? $arr_name_customer[$row['name_customer']]['email'] : '';
         $xtpl->assign('ROW', $row);
         $xtpl->parse('main.loop');
         $i++;
