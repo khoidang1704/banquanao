@@ -8,34 +8,43 @@
 <input type="hidden" name="id" value="{POST.id}">
     <div class="form-group row">
         <div class="col-md-4">
-            <label><strong>Họ tên</strong></label>
+            <label><strong>Tên sản phẩm</strong></label>
         </div>
         <div class="col-md-20">
-            <input class="form-control" type="text" name="fullname" value="{POST.fullname}" />
+        	<select name="name_product" class="form-control">
+         		<option value="0">-- Chọn sản phẩm --</option>
+          		<!-- BEGIN: name_product -->
+          		<option value="{NAME_PRODUCT.key}" {NAME_PRODUCT.selected}>{NAME_PRODUCT.title}</option>
+            	<!-- END: name_product -->
+       		</select>
+       	</div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-4">
+            <label><strong>Màu</strong></label>
+        </div>
+        <div class="col-md-20">
+            <!-- BEGIN: color -->
+            <input class="form-control" type=radio name="color" value="{COLOR.key}" {COLOR.checked}/> {COLOR.title}
+            <!-- END: color -->
         </div>
     </div>
     <div class="form-group row">
         <div class="col-md-4">
-            <label><strong>Địa chỉ</strong></label>
+            <label><strong>Kích thước</strong></label>
         </div>
         <div class="col-md-20">
-        	<textarea class="form-control" name="address" rows="4" value="{POST.address}"></textarea>
+            <!-- BEGIN: size -->
+            <input class="form-control" type=radio name="size" value="{SIZE.key}" {SIZE.checked}/> {SIZE.title}
+            <!-- END: size -->
         </div>
     </div>
     <div class="form-group row">
         <div class="col-md-4">
-            <label><strong>Email</strong></label>
+            <label><strong>Mô tả</strong></label>
         </div>
         <div class="col-md-20">
-            <input class="form-control" type="email" name="email" value="{POST.email}" />
-        </div>
-    </div>
-    <div class="form-group row">
-        <div class="col-md-4">
-            <label><strong>Số điện thoại</strong></label>
-        </div>
-        <div class="col-md-20">
-            <input class="form-control" type="text" name="phone" value="{POST.phone}" />
+        	<textarea class="form-control" name="description" rows="4" value="{POST.description}"></textarea>
         </div>
     </div>
     <div class="text-center">

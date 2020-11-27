@@ -12,48 +12,33 @@ if (!defined('NV_IS_FILE_ADMIN')) {
     die('Stop!!!');
 }
 
-$page_title = $lang_module['main'];
+$page_title = $lang_module['category'];
 
 $post = $err = [];
 $post['id'] = $nv_Request->get_int('id', "post,get", 0);
 if ($nv_Request->isset_request("submit", "post")) {
-    $post['fullname'] = $nv_Request->get_title('fullname', "post", '');
-    $post['address'] = $nv_Request->get_textarea('address', '', NV_ALLOWED_HTML_TAGS, 1);
-    $post['email'] = $nv_Request->get_title('email', "post", '');
-    $post['phone'] = $nv_Request->get_title('phone', "post", '');
-    if ($post['fullname'] == '') {
-        $err[] = "Chưa nhập họ tên";
+    $post['title'] = $nv_Request->get_title('title', "post", '');
+    if ($post['title'] == '') {
+        $err[] = "Chưa nhập tên hãng";
     }
-    if ($post['address'] == '') {
-        $err[] = "Chưa nhập địa chỉ";
-    }
-    if ($post['phone'] == '') {
-        $err[] = "Chưa nhập số điện thoại";
-    } else if (!preg_match("/[0-9]{10,11}/", $post['phone'])) {
-        $err[] = "Số điện thoại chưa đúng quy tắc";
-    }
-
-    if ($post['email'] == '') {
-        $err[] = "Chưa nhập email";
-    } else if (!preg_match("/(.*?)@(.*?)/", $post['email'])) {
-        $err[] = "Email chưa đúng quy tắc";
-    }
-
     if (empty($err)) {
         try {
             if ($post['id'] > 0) {
                 // update
-                $sql = "UPDATE nv4_banquanao_user SET fullname=:fullname, address=:address, email=:email, phone=:phone WHERE id= " . $post['id'];
+                $sql = "UPDATE nv4_shop_category SET title=:title, updatetime=:updatetime WHERE id= " . $post['id'];
                 $stmt = $db->prepare($sql);
+                $stmt->bindValue("updatetime", 0);
             } else {
                 // insert
-                $sql = "INSERT INTO nv4_banquanao_user( fullname, address, email, phone) VALUES (:fullname, :address, :email,:phone)";
+                $sql = "INSERT INTO nv4_shop_category(title, weight, addtime) VALUES (:title, :weight, :addtime)";
                 $stmt = $db->prepare($sql);
+
+                $_sql= "SELECT COUNT(*) FROM nv4_banquanao_product";
+                $weight = $db->query($_sql)->fetchColumn();
+                $stmt->bindValue("weight", ($weight + 1));
+                $stmt->bindValue("addtime", NV_CURRENTTIME);
             }
-            $stmt->bindParam("fullname", $post['fullname']);
-            $stmt->bindParam("address", $post['address']);
-            $stmt->bindParam("email", $post['email']);
-            $stmt->bindParam("phone", $post['phone']);
+            $stmt->bindParam("title", $post['title']);
             $exe = $stmt->execute();
             if ($exe) {
                 if ($post['id'] > 0) {
@@ -70,16 +55,13 @@ if ($nv_Request->isset_request("submit", "post")) {
     }
 } else if ($post['id'] > 0) {
     // tồn tại id thì thực hiện lấy dữ liệu của id đó
-    $sql = "SELECT * FROM nv4_banquanao_user WHERE id = " . $post['id'];
+    $sql = "SELECT * FROM nv4_shop_category WHERE id = " . $post['id'];
     $post = $db->query($sql)->fetch();
 } else {
-    $post['fullname'] = '';
-    $post['address'] = '';
-    $post['email'] = '';
-    $post['phone'] = '';
+    $post['title'] = '';
 }
 
-$xtpl = new XTemplate('main.tpl', NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/modules/' . $module_file);
+$xtpl = new XTemplate('category.tpl', NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/modules/' . $module_file);
 $xtpl->assign('LANG', $lang_module);
 $xtpl->assign('NV_LANG_VARIABLE', NV_LANG_VARIABLE);
 $xtpl->assign('NV_LANG_DATA', NV_LANG_DATA);

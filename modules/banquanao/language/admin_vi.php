@@ -18,9 +18,15 @@ $lang_translator['copyright'] = '@Copyright (C) 2020 VINADES.,JSC All rights res
 $lang_translator['info'] = '';
 $lang_translator['langtype'] = 'lang_module';
 
-$lang_module['main'] = 'Trang chính';
+$lang_module['main'] = 'Thêm khách hàng';
 $lang_module['config'] = 'Cấu hình';
 $lang_module['save'] = 'Lưu lại';
 $lang_module['list'] = 'Danh sách khách hàng';
 $lang_module['product'] = 'Sản phẩm';
 $lang_module['list_product'] = 'Danh sách sản phẩm';
+$lang_module['category'] = 'Hãng';
+$lang_module['list_category'] = "Danh sách các hãng";
+$lang_module['order'] = "Đơn hàng";
+$lang_module['list_order'] = "Danh sách đơn hàng";
+$lang_module['detail'] = "Chi tiết sản phẩm";
+$lang_module['list_detail'] = "Danh sách chi tiết sản phẩm";

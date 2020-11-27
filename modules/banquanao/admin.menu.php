@@ -15,3 +15,9 @@ if (!defined('NV_ADMIN')) {
 $submenu['list'] = $lang_module['list'];
 $submenu['product'] = $lang_module['product'];
 $submenu['list_product'] = $lang_module['list_product'];
+$submenu['detail'] = $lang_module['detail'];
+$submenu['list_detail'] = $lang_module['list_detail'];
+$submenu['category'] = $lang_module['category'];
+$submenu['list_category'] = $lang_module['list_category'];
+$submenu['order'] = $lang_module['order'];
+$submenu['list_order'] = $lang_module['list_order'];

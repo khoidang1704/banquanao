@@ -42,8 +42,8 @@ if ($nv_Request->isset_request("submit", "post")) {
         try {
             if ($post['id'] > 0) {
                 // update
-                $sql = "UPDATE nv4_banquanao_product SET name=:name, firm:=firm, price:= price, status:=status, image:=image,
-                    information:=information, updatetime=:updatetime WHERE id= " . $post['id'];
+                $sql = "UPDATE nv4_banquanao_product SET name=:name, firm=:firm, price=:price, status=:status, image=:image,
+                    information=:information, updatetime=:updatetime WHERE id= " . $post['id'];
                 $stmt = $db->prepare($sql);
                 $stmt->bindValue("updatetime", 0);
             } else {
@@ -111,7 +111,7 @@ foreach ($arr_status as $key => $status) {
 foreach ($arr_firm as $key => $firm) {
     $xtpl->assign('FIRM', array(
         'key' => $key,
-        'title' => $firm,
+        'title' => $firm['title'],
         "selected" => $key == $post['firm'] ? 'selected="selected"' : ''
     ));
     $xtpl->parse('main.firm');

@@ -20,9 +20,9 @@
         </div>    
         <div class="col-md-20">
         	<select name="firm" class="form-control">
-         		<option value="0">Chọn hãng</option>
+         		<option value="0">-- Chọn hãng --</option>
           		<!-- BEGIN: firm -->
-           		<option value="{FIRM.key}" {FIRM.checked}>{FIRM.title}</option>
+          		<option value="{FIRM.key}" {FIRM.selected}>{FIRM.title}</option>
             	<!-- END: firm -->
        		</select>
        	</div>

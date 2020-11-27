@@ -4,12 +4,12 @@
         <thead>
             <tr class="text-center">
                 <th class="text-nowrap">Số thứ tự</th>
-                <th class="text-nowrap">Tên sản phẩm</th>
-                <th class="text-nowrap">Hãng</th>
-                <th class="text-nowrap">Giá</th>
-                <th class="text-nowrap">Trạng thái</th>
-                <th class="text-nowrap">Hình ảnh</th>              
-                <th class="text-nowrap">Thông tin chi tiết</th>
+                <th class="text-nowrap">Tên khách hàng</th>
+                <th class="text-nowrap">Địa chỉ</th>
+                <th class="text-nowrap">Số điện thoại</th>
+                <th class="text-nowrap">Email</th>
+                <th class="text-nowrap">Số lượng sản phẩm</th>              
+                <th class="text-nowrap">Tổng tiền</th>
                 <th class="text-nowrap">Kích hoạt</th>
                 <th class="text-center text-nowrap">Chức năng</th>
             </tr>
@@ -24,15 +24,12 @@
                         <!-- END: weight -->
                      </select>
                 </td>
-                <td>{ROW.name}</td>
-                <td>{ROW.firm}</td>
-                <td>{ROW.price}</td>
-                <td>{ROW.status}</td>
-                <td>
-                	<img src="{ROW.image}" width="100px" height="100px">
-                </td>
-                
-                <td>{ROW.information}</td>
+                <td>{ROW.name_customer}</td>
+                <td>{ROW.address}</td>
+                <td>{ROW.phone}</td>
+                <td>{ROW.email}</td>
+                <td>{ROW.product}</td>
+                <td>{ROW.total}</td>
                 <td class="text-center">
                     <input type="checkbox" name="active" {ROW.active} onchange="nv_change_active({ROW.id})">
                 </td>
@@ -51,7 +48,7 @@ function nv_change_weight(id) {
     $.ajax({
         url : script_name + '?' + nv_name_variable + '=' + nv_module_name
                 + '&' + nv_fc_variable
-                + '=list_product&change_weight=1&id=' + id + '&new_weight='+new_weight,
+                + '=list_order&change_weight=1&id=' + id + '&new_weight='+new_weight,
         success : function(result) {
             if (result != 'ERR') {
                 location.reload();
@@ -63,7 +60,7 @@ function nv_change_active(id) {
     $.ajax({
         url : script_name + '?' + nv_name_variable + '=' + nv_module_name
                 + '&' + nv_fc_variable
-                + '=list_product&change_active=1&id=' + id,
+                + '=list_order&change_active=1&id=' + id,
         success : function(result) {
             if (result == 'ERR') {
                 alert('Lỗi k xác định');
