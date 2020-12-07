@@ -20,7 +20,7 @@ if ($nv_Request->isset_request("action", "post,get")) {
     }
 }
 
-$page_title = $lang_module['config'];
+$page_title = $lang_module['list'];
 
 $perpage = 5;
 $page = $nv_Request->get_int('page', " get", 1);
