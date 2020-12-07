@@ -7,15 +7,32 @@
  */
 
 /* Các tùy chỉnh CSS của giao diện nên để vào đây */
-
-.row{
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.row {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.logo a{
-    white-space : nowrap;
+.logo a {
+    white-space: nowrap;
 }
 
+#row-footer {
+    display: flex;
+    align-items: left !important;
+    justify-content: center;
+}
+
+#footer {
+    color: #000000;
+}
+
+ul.navbar-nav>li>a {
+    z-index: 6;
+}
+
+
+#menusite .dropdown-menu > li {
+    z-index: 1000;
+}
