@@ -5,11 +5,11 @@
     <footer class="section-footer-top" id="footer">
         <div class="wraper">
             <div class="container">
-                <div class="row">
-                    <div class="col-xs-24 col-sm-24 col-md-6">
+                <div class="row" id="row-footer">
+                    <div class="col-xs-24 col-sm-24 col-md-8">
                         [MENU_FOOTER]
                     </div>
-                    <div class="col-xs-24 col-sm-24 col-md-10">
+                    <div class="col-xs-24 col-sm-24 col-md-8">
                         [FEATURED_PRODUCT]
                     </div>
                     <div class="col-xs-24 col-sm-24 col-md-8">
@@ -40,9 +40,7 @@
                 <!-- END: loop -->
                 </div>
                 <!-- END: theme_type -->
-                <div class="bttop">
-                    <a class="pointer"><i class="fa fa-eject fa-lg"></i></a>
-                </div>
+                
             </div>
         </div>
     </nav>
