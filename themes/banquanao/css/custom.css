@@ -29,10 +29,10 @@
 }
 
 ul.navbar-nav>li>a {
-    z-index: 6;
+    z-index: 9999;
 }
 
 
 #menusite .dropdown-menu > li {
-    z-index: 1000;
+    z-index: 9999;
 }
