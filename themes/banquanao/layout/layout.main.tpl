@@ -7,7 +7,6 @@
 <div class="row">
 	<div class="col-md-24">
 		[TOP]
-		{MODULE_CONTENT}
 		[BOTTOM]
 	</div>
 </div>
